@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  background-color:  pink;
+ }
+
+h2 {
+  background:pink;  
+  text-align: center;
+  font-size: 50px;
+}
+
+.mb-4 {
+  background-color:aquamarine;
+}
+
+div.card-body {
+  background-color: pink;
+  border-radius: 5px;
+  
+}
