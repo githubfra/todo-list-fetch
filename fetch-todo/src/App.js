@@ -45,7 +45,22 @@ function App() {
         console.log(error);
       });
   }
-
+  const modificarTareas = (actividad) => {
+    fetch('https://assets.breatheco.de/apis/fake/todos/user/frand',
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(actividad)
+      })
+      .then(resp => {
+        console.log(resp, "respuesta");
+        return resp.json();
+      })
+      .then(data => { console.log(data); })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   /* Guardar */
   const nuevaActividad = (event) => {
@@ -57,9 +72,11 @@ function App() {
 
   const borrarActividad = (indice) => {
     setActividades(actividades.filter((actividad, index) => index !== indice))
-    /* Se aplica put para borrar(aun no lo hago) */
-
+    let deletetask = actividades.filter((actividad, index) => index !== indice)
+    modificarTareas(deletetask)
   }
+
+
   const guardarActividad = (event) => {
     event.preventDefault();
     let nuevaAct = { label: actividad, done: false }
@@ -69,6 +86,7 @@ function App() {
     let newTasks = actividades.concat(nuevaAct)
     putTareas(newTasks)
   }
+
 
   return (
     <div className="container-fluid d-flex m-4 justify-content-center" id="m4">
@@ -103,8 +121,6 @@ function App() {
 
             </div>
           </div>
-
-
 
         </div>
       </div>
